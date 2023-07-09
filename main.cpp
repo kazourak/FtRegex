@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 	}
 
 	try {
-		if(FtRegex::matchRegex("[a-z]+", argv[2]))
+		if(FtRegex::matchRegex(argv[1], argv[2]))
 			std::cout << "regex !!\n";
 	} catch (std::exception &e)
 	{

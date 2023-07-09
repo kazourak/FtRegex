@@ -1,6 +1,7 @@
 //
 // Created by nskiba on 7/9/23.
 //
+#include <iostream>
 
 #include "FtRegex.hpp"
 #include <iostream>
@@ -24,7 +25,7 @@ bool FtRegex::matchRegex(const std::string &pattern, const std::string &string)
 	memset(&_rmatch, 0, sizeof(_rmatch));
 
 	status = regexec(&_preg, string.c_str(), 1, &_rmatch, 0);
-
+	std::cout << _rmatch.rm_eo << " " << _rmatch.rm_so<< std::endl;
 	regfree(&_preg);
 	return (status == 0 && string.length() == ((size_t)_rmatch.rm_eo - (size_t)_rmatch.rm_so));
 }
