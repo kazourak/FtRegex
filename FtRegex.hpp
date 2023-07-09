@@ -11,7 +11,6 @@ class FtRegex
 {
 private:
 	static regex_t _preg;
-	static regmatch_t _rmatch;
 
 	FtRegex();                                  //canonical form, 42 subject requirement
 	FtRegex(const FtRegex &src);                //canonical form, 42 subject requirement

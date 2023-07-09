@@ -11,7 +11,7 @@ int main(int argc, char **argv)
 
 	try {
 		if(FtRegex::matchRegex(argv[1], argv[2]))
-			std::cout << "regex !!\n";
+			std::cout << "regex match!\n";
 	} catch (std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;

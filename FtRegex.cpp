@@ -4,9 +4,7 @@
 #include <iostream>
 
 #include "FtRegex.hpp"
-#include <iostream>
 regex_t FtRegex::_preg;
-regmatch_t FtRegex::_rmatch;
 
 /**
  * Performs a perfect match between a regular expression pattern and a string.
@@ -22,12 +20,9 @@ bool FtRegex::matchRegex(const std::string &pattern, const std::string &string)
 	if (regcomp(&_preg, pattern.c_str(), REG_EXTENDED) != 0)
 		throw FtRegex::RegCompFailedException();
 
-	memset(&_rmatch, 0, sizeof(_rmatch));
-
-	status = regexec(&_preg, string.c_str(), 1, &_rmatch, 0);
-	std::cout << _rmatch.rm_eo << " " << _rmatch.rm_so<< std::endl;
+	status = regexec(&_preg, string.c_str(), 0, NULL, 0);
 	regfree(&_preg);
-	return (status == 0 && string.length() == ((size_t)_rmatch.rm_eo - (size_t)_rmatch.rm_so));
+	return (status == 0);
 }
 
 const char *FtRegex::RegCompFailedException::what() const throw()
