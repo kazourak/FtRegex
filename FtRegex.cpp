@@ -3,7 +3,7 @@
 //
 
 #include "FtRegex.hpp"
-
+#include <iostream>
 regex_t FtRegex::_preg;
 regmatch_t FtRegex::_rmatch;
 
@@ -26,7 +26,7 @@ bool FtRegex::matchRegex(const std::string &pattern, const std::string &string)
 	status = regexec(&_preg, string.c_str(), 1, &_rmatch, 0);
 
 	regfree(&_preg);
-	return (status == 0 && string.length() == (_rmatch.rm_eo - _rmatch.rm_so));
+	return (status == 0 && string.length() == ((size_t)_rmatch.rm_eo - (size_t)_rmatch.rm_so));
 }
 
 const char *FtRegex::RegCompFailedException::what() const throw()

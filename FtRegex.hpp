@@ -5,6 +5,7 @@
 #include <string>
 #include <exception>
 #include <cstring>
+#include <cstdlib>
 
 class FtRegex
 {
